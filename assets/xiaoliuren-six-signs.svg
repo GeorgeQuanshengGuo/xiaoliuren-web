@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">小六壬六神顺序图</title>
+  <desc id="desc">以大安、留连、速喜、赤口、小吉、空亡六神为核心的小六壬起课示意图。</desc>
+  <defs>
+    <radialGradient id="paper" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#fffaf0"/>
+      <stop offset="100%" stop-color="#f3efe3"/>
+    </radialGradient>
+    <linearGradient id="ink" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#7f1d1d"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#111827" flood-opacity="0.18"/>
+    </filter>
+    <style>
+      .title { font: 700 58px "Songti SC", "Noto Serif CJK SC", serif; fill: #111827; }
+      .subtitle { font: 400 24px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #4b5563; }
+      .sign { font: 700 34px "Songti SC", "Noto Serif CJK SC", serif; fill: #111827; }
+      .meta { font: 500 20px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #6b7280; }
+      .formula { font: 600 23px "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #374151; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#paper)"/>
+  <path d="M0 112 C190 72 292 126 430 88 C610 38 756 70 910 112 C1060 152 1166 118 1280 78 L1280 0 L0 0 Z" fill="#efe3c8" opacity="0.7"/>
+  <path d="M0 628 C210 574 336 666 514 620 C718 568 854 604 1010 650 C1138 688 1226 654 1280 632 L1280 720 L0 720 Z" fill="#e8dcc2" opacity="0.75"/>
+
+  <g transform="translate(640 370)" filter="url(#shadow)">
+    <circle r="250" fill="#fffdf7" stroke="#7f1d1d" stroke-width="4"/>
+    <circle r="190" fill="none" stroke="#c7a66b" stroke-width="2"/>
+    <circle r="112" fill="#f8f1df" stroke="#7f1d1d" stroke-width="3"/>
+    <circle r="42" fill="url(#ink)"/>
+    <text x="0" y="-8" text-anchor="middle" class="sign" fill="#fff">六</text>
+    <text x="0" y="28" text-anchor="middle" class="sign" fill="#fff">壬</text>
+
+    <g>
+      <circle cx="0" cy="-205" r="58" fill="#fef3c7" stroke="#92400e" stroke-width="3"/>
+      <text x="0" y="-194" text-anchor="middle" class="sign">大安</text>
+      <text x="0" y="-148" text-anchor="middle" class="meta">安定</text>
+    </g>
+    <g>
+      <circle cx="178" cy="-103" r="58" fill="#f5f3ff" stroke="#6d28d9" stroke-width="3"/>
+      <text x="178" y="-92" text-anchor="middle" class="sign">留连</text>
+      <text x="178" y="-46" text-anchor="middle" class="meta">反复</text>
+    </g>
+    <g>
+      <circle cx="178" cy="103" r="58" fill="#fee2e2" stroke="#b91c1c" stroke-width="3"/>
+      <text x="178" y="114" text-anchor="middle" class="sign">速喜</text>
+      <text x="178" y="160" text-anchor="middle" class="meta">消息</text>
+    </g>
+    <g>
+      <circle cx="0" cy="205" r="58" fill="#ffedd5" stroke="#c2410c" stroke-width="3"/>
+      <text x="0" y="216" text-anchor="middle" class="sign">赤口</text>
+      <text x="0" y="262" text-anchor="middle" class="meta">慎言</text>
+    </g>
+    <g>
+      <circle cx="-178" cy="103" r="58" fill="#dcfce7" stroke="#15803d" stroke-width="3"/>
+      <text x="-178" y="114" text-anchor="middle" class="sign">小吉</text>
+      <text x="-178" y="160" text-anchor="middle" class="meta">转机</text>
+    </g>
+    <g>
+      <circle cx="-178" cy="-103" r="58" fill="#e5e7eb" stroke="#4b5563" stroke-width="3"/>
+      <text x="-178" y="-92" text-anchor="middle" class="sign">空亡</text>
+      <text x="-178" y="-46" text-anchor="middle" class="meta">核查</text>
+    </g>
+
+    <path d="M43 -184 A190 190 0 0 1 141 -128" fill="none" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+    <path d="M196 -46 A190 190 0 0 1 196 46" fill="none" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+    <path d="M141 128 A190 190 0 0 1 43 184" fill="none" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-43 184 A190 190 0 0 1 -141 128" fill="none" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-196 46 A190 190 0 0 1 -196 -46" fill="none" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-141 -128 A190 190 0 0 1 -43 -184" fill="none" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <text x="90" y="116" class="title">小六壬起课</text>
+  <text x="90" y="158" class="subtitle">以农历月、日、时辰顺推六神，重在看节奏、线索与复盘</text>
+
+  <g transform="translate(90 552)">
+    <rect width="388" height="104" rx="8" fill="#fffdf7" stroke="#d6c7a2"/>
+    <text x="28" y="44" class="formula">月位 = (农历月 - 1) % 6</text>
+    <text x="28" y="78" class="formula">日位、时位依序顺推</text>
+  </g>
+</svg>
