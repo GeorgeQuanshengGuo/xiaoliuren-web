@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from .models import EarthlyBranch
 
+APP_VERSION = "v0.2.0"
 DEFAULT_FALLBACK_TIMEZONE = "Asia/Shanghai"
 
 CAST_METHOD_CURRENT = "使用当前时间"

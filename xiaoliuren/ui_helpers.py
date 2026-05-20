@@ -5,6 +5,7 @@ from pathlib import Path
 
 import streamlit as st
 
+from .constants import APP_VERSION
 from .models import DivinationResult, RuleProfile, SixSign
 
 HERO_IMAGE_PATH = Path(__file__).resolve().parent.parent / "assets" / "xiaoliuren-six-signs.svg"
@@ -200,6 +201,8 @@ def render_intro_section() -> None:
 
 def render_sidebar_rules(profile: RuleProfile | None = None) -> None:
     with st.sidebar:
+        st.caption(f"版本：{APP_VERSION}")
+
         if profile:
             st.header("当前流派")
             st.write(profile.name)

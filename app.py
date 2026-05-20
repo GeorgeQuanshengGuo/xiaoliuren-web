@@ -7,6 +7,7 @@ import streamlit as st
 
 from xiaoliuren.browser_time import get_browser_time_info, parse_browser_iso_datetime
 from xiaoliuren.constants import (
+    APP_VERSION,
     BRANCH_LABEL_TO_ENUM,
     CAST_METHOD_CURRENT,
     CAST_METHOD_LUNAR,
@@ -65,6 +66,7 @@ def main() -> None:
     st.subheader("传统文化参考｜本机时间起课｜本地解释")
     st.warning("本工具仅作传统文化学习与娱乐参考，不替代医疗、法律、投资等专业建议。")
     st.caption(f"当前采用流派：{DEFAULT_PROFILE.name}")
+    st.caption(f"当前版本：{APP_VERSION}")
     render_intro_section()
     try:
         browser_time_info = get_browser_time_info()
@@ -152,7 +154,7 @@ def main() -> None:
                 st.info(time_warning)
             render_result(result)
 
-    st.caption("本工具不保存服务器数据库，也不会保存你的起课记录。")
+    st.caption(f"{APP_VERSION}｜本工具不保存服务器数据库，也不会保存你的起课记录。")
 
 
 if __name__ == "__main__":
