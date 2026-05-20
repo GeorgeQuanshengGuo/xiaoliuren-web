@@ -62,7 +62,7 @@ def main() -> None:
     render_sidebar_rules(DEFAULT_PROFILE)
 
     st.title("小六壬起课工具")
-    st.subheader("传统文化参考｜规则透明｜自动起课")
+    st.subheader("传统文化参考｜本机时间起课｜本地解释")
     st.warning("本工具仅作传统文化学习与娱乐参考，不替代医疗、法律、投资等专业建议。")
     st.caption(f"当前采用流派：{DEFAULT_PROFILE.name}")
     render_intro_section()

@@ -69,6 +69,7 @@ TOPIC_DESCRIPTIONS: dict[Topic, str] = {
     Topic.GENERAL: "综合事项重在看确定性、阻力与下一步节奏。",
     Topic.WEALTH: "财运/求财重在核对现金流、合同条款、预算边界和风险承受力；本解读不做收益承诺。",
     Topic.CAREER: "工作/事业重在看任务推进、沟通成本、资源配合与反馈速度。",
+    Topic.JOB_SEARCH: "求职重在看岗位匹配、投递节奏、面试反馈、材料准备和后续跟进。",
     Topic.RELATIONSHIP: "感情/关系重在沟通、尊重边界和真实互动，不用于操控对方，也不制造恐惧。",
     Topic.LOST_ITEM: "寻物重在线索回溯、位置判断和是否有人移动过。",
     Topic.TRAVEL: "出行重在时间余量、证件票据、路线变化和途中沟通。",
@@ -104,6 +105,14 @@ SCENARIO_MEANINGS: dict[Topic, dict[SixSign, str]] = {
         SixSign.CHI_KOU: "职场中容易有误解或争论，表达要清楚，记录要完整。",
         SixSign.XIAO_JI: "有小成果或贵人助力，适合用阶段性成果争取空间。",
         SixSign.KONG_WANG: "方向或职责可能还不清楚，适合先确认目标和边界。",
+    },
+    Topic.JOB_SEARCH: {
+        SixSign.DA_AN: "求职局面偏稳，适合打磨简历、整理作品集、维护已有内推和熟人渠道。",
+        SixSign.LIU_LIAN: "求职进度可能卡在筛选、排期或等待反馈上，需要主动梳理投递记录和跟进节点。",
+        SixSign.SU_XI: "较容易出现面试邀约、回复或新岗位线索，适合及时投递并快速确认时间安排。",
+        SixSign.CHI_KOU: "面试沟通、薪资表达或岗位理解容易出现误差，回答问题要清楚，重要信息要留痕。",
+        SixSign.XIAO_JI: "有小机会或阶段性进展，适合先争取面试、试岗、短名单或二面这类下一步。",
+        SixSign.KONG_WANG: "岗位信息、招聘真实性或个人匹配度可能还不清楚，适合先核查 JD、公司背景和用人需求。",
     },
     Topic.RELATIONSHIP: {
         SixSign.DA_AN: "关系有安定基础，适合温和表达、稳定陪伴和长期经营。",
@@ -210,6 +219,10 @@ TOPIC_ACTIONS: dict[Topic, dict[str, list[str]]] = {
     Topic.WEALTH: {
         "suggested": ["核对现金流、合同、付款节点和风险边界"],
         "avoid": ["把解读当作投资依据", "忽略成本和最坏情况"],
+    },
+    Topic.JOB_SEARCH: {
+        "suggested": ["更新简历和作品集", "记录投递渠道、岗位要求和跟进时间", "准备面试中的项目案例和薪资边界"],
+        "avoid": ["海投后不复盘", "忽略岗位真实性和用人需求", "在未确认条件前过早做决定"],
     },
     Topic.RELATIONSHIP: {
         "suggested": ["用清楚、尊重的方式表达真实想法"],

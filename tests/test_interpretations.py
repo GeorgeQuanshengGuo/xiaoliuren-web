@@ -76,6 +76,22 @@ def test_cooperation_contract_contains_legal_notice() -> None:
     )
 
 
+@pytest.mark.parametrize("sign", list(SixSign))
+def test_job_search_returns_job_specific_interpretation(sign: SixSign) -> None:
+    interpretation = get_interpretation(sign, Topic.JOB_SEARCH, question="这份工作机会适合推进吗？")
+    combined_text = " ".join(
+        [
+            interpretation.summary,
+            interpretation.question_meaning,
+            *interpretation.suggested_actions,
+            *interpretation.avoid_actions,
+        ]
+    )
+
+    assert "求职" in combined_text
+    assert any(keyword in combined_text for keyword in ["简历", "面试", "岗位", "投递"])
+
+
 @pytest.mark.parametrize(
     ("sign", "expected_text"),
     [

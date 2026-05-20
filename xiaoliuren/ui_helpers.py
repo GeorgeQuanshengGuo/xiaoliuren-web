@@ -74,7 +74,7 @@ def inject_page_styles() -> None:
             border: 1px solid #E5E7EB;
             border-radius: 8px;
             padding: 1.25rem;
-            background: #FFFFFF;
+            background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
             box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
             margin: 1rem 0 0.75rem;
         }
@@ -95,12 +95,36 @@ def inject_page_styles() -> None:
             font-size: 1.05rem;
             font-weight: 600;
         }
+        .result-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.9rem;
+        }
+        .result-pill {
+            border: 1px solid #E5E7EB;
+            border-radius: 999px;
+            padding: 0.28rem 0.68rem;
+            color: #374151;
+            background: rgba(255, 255, 255, 0.76);
+            font-size: 0.86rem;
+        }
         .soft-card {
             border: 1px solid #E5E7EB;
             border-radius: 8px;
             padding: 1rem;
-            background: #F9FAFB;
+            background: #FFFFFF;
             margin: 0.75rem 0;
+        }
+        .soft-card-title {
+            color: #111827;
+            font-weight: 800;
+        }
+        .soft-card-body {
+            color: #374151;
+            line-height: 1.75;
+            margin-top: 0.45rem;
+            white-space: pre-line;
         }
         .intro-card {
             border: 1px solid #E5E7EB;
@@ -149,7 +173,7 @@ def render_intro_section() -> None:
     st.image(
         str(HERO_IMAGE_PATH),
         caption="配图：小六壬六神顺序示意图。本图为本项目自制视觉，用于帮助理解起课顺推关系。",
-        use_container_width=True,
+        width="stretch",
     )
     st.markdown(
         """
@@ -160,12 +184,12 @@ def render_intro_section() -> None:
                 小六壬是一种民间常见的时间起课方法。它用农历月、农历日和当下时辰，
                 沿“大安、留连、速喜、赤口、小吉、空亡”的顺序推算结果，
                 帮助使用者整理问题、观察当前节奏，并在事后复盘实际情况。
-                本工具把起课路径和解释规则都展示出来，适合作为传统文化学习与娱乐参考。
+                本工具会展示起课路径、六神取象和场景化建议，适合作为传统文化学习与娱乐参考。
             </div>
             <div class="intro-chips">
                 <span class="intro-chip">月日时起课</span>
-                <span class="intro-chip">六神路径透明</span>
-                <span class="intro-chip">本地规则模板</span>
+                <span class="intro-chip">六神取象分析</span>
+                <span class="intro-chip">场景化建议</span>
                 <span class="intro-chip">不保存起课记录</span>
             </div>
         </div>
@@ -263,12 +287,18 @@ def render_learning_section() -> None:
 def render_result_card(result: DivinationResult) -> None:
     color = SIGN_COLORS[result.sign]
     keywords = SIGN_KEYWORDS[result.sign]
+    safe_topic = escape(result.topic.label)
+    safe_question = escape(result.question or "未填写具体问题")
     st.markdown(
         f"""
         <div class="result-card">
             <div class="result-label">最终六神</div>
             <div class="result-sign" style="color: {color};">{result.sign.value}</div>
             <div class="result-keywords">{keywords}</div>
+            <div class="result-meta">
+                <span class="result-pill">场景：{safe_topic}</span>
+                <span class="result-pill">问题：{safe_question}</span>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -281,8 +311,8 @@ def render_text_card(title: str, body: str) -> None:
     st.markdown(
         f"""
         <div class="soft-card">
-            <strong>{safe_title}</strong>
-            <div style="margin-top: 0.45rem;">{safe_body}</div>
+            <div class="soft-card-title">{safe_title}</div>
+            <div class="soft-card-body">{safe_body}</div>
         </div>
         """,
         unsafe_allow_html=True,

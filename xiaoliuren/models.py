@@ -40,6 +40,7 @@ class Topic(Enum):
     GENERAL = ("general", "综合事项", "适合尚未分类的一般问题。")
     WEALTH = ("wealth", "财运/求财", "关注收入、支出、机会与风险控制。")
     CAREER = ("career", "工作/事业", "关注职场进展、任务推进与职业选择。")
+    JOB_SEARCH = ("job_search", "求职", "关注投递、面试、录用反馈与岗位匹配。")
     RELATIONSHIP = ("relationship", "感情/关系", "关注亲密关系、人际互动与沟通状态。")
     LOST_ITEM = ("lost_item", "寻物", "关注遗失物品的线索与查找方向。")
     TRAVEL = ("travel", "出行", "关注行程安排、延误与途中协调。")
@@ -128,4 +129,3 @@ class SolarToLunarResult:
 
 
 SolarConversionResult = SolarToLunarResult
-
