@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import json
 from html import escape
 from pathlib import Path
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 from .constants import APP_VERSION
+from .llm_prompt import build_llm_interpretation_prompt
 from .models import DivinationResult, RuleProfile, SixSign
 
 HERO_IMAGE_PATH = Path(__file__).resolve().parent.parent / "assets" / "xiaoliuren-six-signs.svg"
@@ -462,3 +465,122 @@ def build_path_rows(result: DivinationResult) -> list[dict[str, str]]:
 def render_path_table(result: DivinationResult) -> None:
     st.markdown("### 起课路径")
     st.table(build_path_rows(result))
+
+
+def render_llm_prompt_copy(result: DivinationResult) -> None:
+    prompt = build_llm_interpretation_prompt(result)
+    prompt_json = json.dumps(prompt, ensure_ascii=False)
+    safe_prompt = escape(prompt)
+    components.html(
+        f"""
+        <div class="copy-card">
+            <div class="copy-title">复制给大语言模型解读</div>
+            <div class="copy-body">
+                点击下方按钮，会复制一段包含问题、起课路径和本页解释的提示词。
+            </div>
+            <button class="copy-button" type="button" onclick="copyPrompt()">复制解读提示词</button>
+            <div id="copyStatus" class="copy-status" aria-live="polite"></div>
+            <textarea id="promptText" class="copy-textarea" readonly>{safe_prompt}</textarea>
+        </div>
+        <script>
+        const promptText = {prompt_json};
+        async function copyPrompt() {{
+            const status = document.getElementById("copyStatus");
+            const textarea = document.getElementById("promptText");
+            try {{
+                if (navigator.clipboard && window.isSecureContext) {{
+                    await navigator.clipboard.writeText(promptText);
+                }} else {{
+                    textarea.focus();
+                    textarea.select();
+                    document.execCommand("copy");
+                    textarea.setSelectionRange(0, 0);
+                }}
+                status.textContent = "已复制，可以粘贴给大语言模型。";
+                status.className = "copy-status success";
+            }} catch (error) {{
+                textarea.focus();
+                textarea.select();
+                status.textContent = "自动复制未成功，请手动全选下方文字复制。";
+                status.className = "copy-status warning";
+            }}
+        }}
+        </script>
+        <style>
+        body {{
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #1F2937;
+            font-size: 18px;
+        }}
+        .copy-card {{
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #FFFFFF;
+            box-sizing: border-box;
+        }}
+        .copy-title {{
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 0.35rem;
+        }}
+        .copy-body {{
+            color: #4B5563;
+            line-height: 1.75;
+            margin-bottom: 0.8rem;
+        }}
+        .copy-button {{
+            width: 100%;
+            min-height: 3.2rem;
+            border: 0;
+            border-radius: 10px;
+            background: #8B5CF6;
+            color: white;
+            font-size: 1.08rem;
+            font-weight: 800;
+            cursor: pointer;
+        }}
+        .copy-button:hover {{
+            background: #7C3AED;
+        }}
+        .copy-status {{
+            min-height: 1.8rem;
+            margin-top: 0.65rem;
+            color: #4B5563;
+            line-height: 1.55;
+        }}
+        .copy-status.success {{
+            color: #166534;
+            font-weight: 700;
+        }}
+        .copy-status.warning {{
+            color: #92400E;
+            font-weight: 700;
+        }}
+        .copy-textarea {{
+            width: 100%;
+            height: 9rem;
+            margin-top: 0.55rem;
+            padding: 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            color: #374151;
+            background: #F9FAFB;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            resize: vertical;
+        }}
+        @media (max-width: 640px) {{
+            body {{
+                font-size: 17px;
+            }}
+            .copy-card {{
+                padding: 0.9rem;
+            }}
+        }}
+        </style>
+        """,
+        height=410,
+    )

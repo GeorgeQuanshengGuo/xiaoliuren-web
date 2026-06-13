@@ -24,6 +24,7 @@ from xiaoliuren.ui_helpers import (
     render_actions,
     render_intro_section,
     render_learning_section,
+    render_llm_prompt_copy,
     render_path_table,
     render_result_card,
     render_sidebar_rules,
@@ -55,6 +56,7 @@ def render_result(result: DivinationResult) -> None:
         render_actions("避免事项", result.avoid_actions)
     render_text_card("复盘提示", result.review_prompt)
     render_path_table(result)
+    render_llm_prompt_copy(result)
 
 
 def main() -> None:
