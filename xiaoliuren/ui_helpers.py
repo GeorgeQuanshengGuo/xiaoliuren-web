@@ -66,103 +66,208 @@ def inject_page_styles() -> None:
     st.markdown(
         """
         <style>
+        html, body, [class*="css"] {
+            font-size: 18px;
+        }
+        .stApp {
+            font-size: 1rem;
+        }
         .block-container {
-            max-width: 760px;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+            max-width: 820px;
+            padding-top: 2.25rem;
+            padding-bottom: 2.5rem;
+        }
+        h1 {
+            font-size: clamp(2.35rem, 8vw, 3.25rem) !important;
+            line-height: 1.16 !important;
+            margin-bottom: 0.7rem !important;
+        }
+        h2, h3 {
+            line-height: 1.25 !important;
+        }
+        p, li, label, .stMarkdown, .stCaption, .stAlert, .stRadio, .stSelectbox,
+        .stTextArea, .stDateInput, .stTimeInput, .stNumberInput, .stCheckbox {
+            font-size: 1rem !important;
+            line-height: 1.75 !important;
+        }
+        [data-testid="stCaptionContainer"] p {
+            font-size: 0.98rem !important;
+            line-height: 1.65 !important;
+        }
+        [data-testid="stAlert"] {
+            font-size: 1rem !important;
+            line-height: 1.7 !important;
+        }
+        [data-testid="stWidgetLabel"] p {
+            font-size: 1.08rem !important;
+            font-weight: 700 !important;
+        }
+        div[role="radiogroup"] label,
+        [data-testid="stCheckbox"] label {
+            min-height: 2.5rem;
+            align-items: center;
+        }
+        div[role="radiogroup"] label p,
+        [data-testid="stCheckbox"] label p {
+            font-size: 1.08rem !important;
+            font-weight: 700 !important;
+        }
+        .stSelectbox div[data-baseweb="select"] > div,
+        .stDateInput input,
+        .stTimeInput input,
+        .stNumberInput input,
+        .stTextArea textarea {
+            min-height: 3.15rem;
+            font-size: 1.05rem !important;
+            line-height: 1.65 !important;
+        }
+        .stTextArea textarea {
+            min-height: 7.5rem !important;
+        }
+        .stButton button,
+        .stDownloadButton button,
+        [data-testid="stFormSubmitButton"] button {
+            min-height: 3.25rem;
+            font-size: 1.12rem !important;
+            font-weight: 800 !important;
+            border-radius: 10px !important;
+        }
+        [data-testid="stPills"] button {
+            min-height: 2.7rem;
+            padding: 0.55rem 0.9rem;
+            font-size: 1.03rem !important;
+            font-weight: 700 !important;
+            border-radius: 999px !important;
+        }
+        .stTable table {
+            font-size: 1rem;
+        }
+        .stTable th,
+        .stTable td {
+            padding: 0.78rem 0.9rem !important;
+            line-height: 1.55 !important;
         }
         .result-card {
             border: 1px solid #E5E7EB;
             border-radius: 8px;
-            padding: 1.25rem;
+            padding: 1.45rem;
             background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
             box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
-            margin: 1rem 0 0.75rem;
+            margin: 1.1rem 0 0.9rem;
         }
         .result-label {
             color: #6B7280;
-            font-size: 0.9rem;
-            margin-bottom: 0.15rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
         }
         .result-sign {
-            font-size: clamp(2.7rem, 10vw, 4.5rem);
+            font-size: clamp(3.3rem, 12vw, 5.4rem);
             font-weight: 800;
             line-height: 1.05;
             letter-spacing: 0;
         }
         .result-keywords {
-            margin-top: 0.45rem;
+            margin-top: 0.6rem;
             color: #374151;
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
         .result-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-top: 0.9rem;
+            gap: 0.55rem;
+            margin-top: 1rem;
         }
         .result-pill {
             border: 1px solid #E5E7EB;
             border-radius: 999px;
-            padding: 0.28rem 0.68rem;
+            padding: 0.4rem 0.8rem;
             color: #374151;
             background: rgba(255, 255, 255, 0.76);
-            font-size: 0.86rem;
+            font-size: 0.98rem;
+            line-height: 1.45;
         }
         .soft-card {
             border: 1px solid #E5E7EB;
             border-radius: 8px;
-            padding: 1rem;
+            padding: 1.15rem;
             background: #FFFFFF;
-            margin: 0.75rem 0;
+            margin: 0.85rem 0;
         }
         .soft-card-title {
             color: #111827;
             font-weight: 800;
+            font-size: 1.16rem;
         }
         .soft-card-body {
             color: #374151;
-            line-height: 1.75;
-            margin-top: 0.45rem;
+            line-height: 1.85;
+            margin-top: 0.55rem;
             white-space: pre-line;
+            font-size: 1.06rem;
         }
         .intro-card {
             border: 1px solid #E5E7EB;
             border-radius: 8px;
-            padding: 1rem;
+            padding: 1.15rem;
             background: #FFFFFF;
-            margin: 0.75rem 0 1rem;
+            margin: 0.85rem 0 1.1rem;
         }
         .intro-eyebrow {
             color: #6B7280;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.4rem;
         }
         .intro-title {
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             color: #111827;
         }
         .intro-copy {
             color: #374151;
-            line-height: 1.75;
-            margin-bottom: 0.85rem;
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            font-size: 1.06rem;
         }
         .intro-chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.45rem;
+            gap: 0.55rem;
         }
         .intro-chip {
             border: 1px solid #E5E7EB;
             border-radius: 999px;
-            padding: 0.25rem 0.65rem;
+            padding: 0.38rem 0.78rem;
             color: #374151;
             background: #F9FAFB;
-            font-size: 0.86rem;
+            font-size: 0.98rem;
+            line-height: 1.45;
+        }
+        @media (max-width: 640px) {
+            html, body, [class*="css"] {
+                font-size: 17px;
+            }
+            .block-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 1.35rem;
+            }
+            .result-card,
+            .soft-card,
+            .intro-card {
+                padding: 1rem;
+            }
+            .result-sign {
+                font-size: clamp(3rem, 18vw, 4.4rem);
+            }
+            .stButton button,
+            .stDownloadButton button,
+            [data-testid="stFormSubmitButton"] button {
+                min-height: 3.1rem;
+            }
         }
         </style>
         """,
@@ -191,7 +296,6 @@ def render_intro_section() -> None:
                 <span class="intro-chip">月日时起课</span>
                 <span class="intro-chip">六神取象分析</span>
                 <span class="intro-chip">场景化建议</span>
-                <span class="intro-chip">不保存起课记录</span>
             </div>
         </div>
         """,

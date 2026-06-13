@@ -63,7 +63,6 @@ def main() -> None:
     render_sidebar_rules(DEFAULT_PROFILE)
 
     st.title("小六壬起课工具")
-    st.subheader("传统文化参考｜本机时间起课｜本地解释")
     st.warning("本工具仅作传统文化学习与娱乐参考，不替代医疗、法律、投资等专业建议。")
     st.caption(f"当前采用流派：{DEFAULT_PROFILE.name}")
     st.caption(f"当前版本：{APP_VERSION}")
@@ -95,7 +94,15 @@ def main() -> None:
 
     with st.form("cast_form"):
         night_zi_changes_day = st.checkbox("夜子时换日（23:00 后按次日换算农历）", value=False)
-        topic_label = st.selectbox("场景选择", list(topic_map.keys()), index=0)
+        topic_labels = list(topic_map.keys())
+        topic_label = st.pills(
+            "场景选择",
+            topic_labels,
+            default=topic_labels[0],
+            required=True,
+            width="stretch",
+        )
+        selected_topic_label = topic_label or topic_labels[0]
         question = st.text_area(
             "具体问题（可为空）",
             placeholder="例如：这件事今天适合推进吗？",
@@ -136,7 +143,7 @@ def main() -> None:
             result, time_source, actual_timezone, time_warning = resolve_cast_request(
                 cast_method=cast_method,
                 night_zi_changes_day=night_zi_changes_day,
-                topic=topic_map[topic_label],
+                topic=topic_map[selected_topic_label],
                 question=question,
                 browser_time_info=browser_time_info,
                 selected_date=selected_date,
@@ -153,8 +160,6 @@ def main() -> None:
             if time_warning:
                 st.info(time_warning)
             render_result(result)
-
-    st.caption(f"{APP_VERSION}｜本工具不保存服务器数据库，也不会保存你的起课记录。")
 
 
 if __name__ == "__main__":
